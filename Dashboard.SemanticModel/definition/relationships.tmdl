@@ -1,0 +1,10 @@
+relationship 176ae7e9-3fa6-459e-bbf3-8934861e8e5a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dams_triage_scored.'Data Last Updated'
+	toColumn: LocalDateTable_1c1b5289-d2d9-4db5-a6cb-2ff620210fa3.Date
+
+relationship a516d348-acfe-4836-8d0d-a6e6f6060d0b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dams_triage_scored.'Operational Status Date'
+	toColumn: LocalDateTable_b8e1d758-4cc1-4b53-95b1-aa8dd62f8a13.Date
+

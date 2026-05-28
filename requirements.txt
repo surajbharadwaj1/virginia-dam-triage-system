@@ -1,0 +1,10 @@
+pandas
+numpy
+geopandas
+shapely
+fiona
+pyproj
+requests
+openpyxl
+scipy
+matplotlib

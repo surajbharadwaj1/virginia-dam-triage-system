@@ -1,0 +1,778 @@
+table dams_triage_scored
+	lineageTag: 74bbcbea-6e8d-4487-80cc-2a06c6cbb781
+
+	measure 'Total Dams' = COUNTROWS(dams_triage_scored)
+		formatString: 0
+		lineageTag: 17f63650-55c2-4a20-9969-d9810894b584
+
+	measure 'Critical Dams' = COUNTROWS(FILTER(dams_triage_scored, [Priority_Band] = "Critical"))
+		formatString: 0
+		lineageTag: cbdadc95-7109-4abe-8ffc-91825b10fc46
+
+	measure 'No EAP Critical' = COUNTROWS(FILTER(dams_triage_scored, [Priority_Band] = "Critical" && [EAP Prepared] = "No"))
+		formatString: 0
+		lineageTag: 8b20e10f-9c4f-4c33-a669-b96735c5d563
+
+	measure 'Unclassified Dams' = SUM(dams_triage_scored[Needs_Hazard_Classification])
+		formatString: 0
+		lineageTag: 37e01464-f1a8-4005-88d4-2f2c2f7dc7a3
+
+	column 'Dam Name'
+		dataType: string
+		lineageTag: a689e1dc-437d-4c55-8904-8d785c34f784
+		summarizeBy: none
+		sourceColumn: Dam Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Other Names'
+		dataType: string
+		lineageTag: 91411582-bac0-4fe2-9fc5-52dbb5ac3cb5
+		summarizeBy: none
+		sourceColumn: Other Names
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NID ID'
+		dataType: string
+		lineageTag: 69198fb7-5cfc-4b17-b743-e087547f2d13
+		summarizeBy: none
+		sourceColumn: NID ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Federal ID'
+		dataType: string
+		lineageTag: dd07f24b-8b7a-462b-a79b-9bb53d4dd4b9
+		summarizeBy: none
+		sourceColumn: Federal ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Owner Names'
+		dataType: string
+		lineageTag: 8a74b8bc-79c7-4947-9b56-54298144059c
+		summarizeBy: none
+		sourceColumn: Owner Names
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Owner Types'
+		dataType: string
+		lineageTag: a3f6f51a-64ce-4439-8eff-1c704bf2ac05
+		summarizeBy: none
+		sourceColumn: Owner Types
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Primary Owner Type'
+		dataType: string
+		lineageTag: a7ac0e02-f078-4ef3-9387-9102a0e4c6d9
+		summarizeBy: none
+		sourceColumn: Primary Owner Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of Associated Structures'
+		dataType: int64
+		formatString: 0
+		lineageTag: e7d7d03a-71df-4cfe-a196-8f8e152045ae
+		summarizeBy: sum
+		sourceColumn: Number of Associated Structures
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Associated Structure?'
+		dataType: string
+		lineageTag: b6d10cb4-301d-48ee-8f17-e3744df21f31
+		summarizeBy: none
+		sourceColumn: Is Associated Structure?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Designer Names'
+		dataType: string
+		lineageTag: 5b071294-23d8-4c71-84b2-8f823a937194
+		summarizeBy: none
+		sourceColumn: Designer Names
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Primary Purpose'
+		dataType: string
+		lineageTag: 81e24368-89e0-409d-9563-0e6483f4b59b
+		summarizeBy: none
+		sourceColumn: Primary Purpose
+
+		annotation SummarizationSetBy = Automatic
+
+	column Purposes
+		dataType: string
+		lineageTag: 3dc2b9c7-6d65-4b11-805d-4d77d2f22c31
+		summarizeBy: none
+		sourceColumn: Purposes
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Source Agency'
+		dataType: string
+		lineageTag: e101271d-91c1-433f-a40c-d04216db787c
+		summarizeBy: none
+		sourceColumn: Source Agency
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'State or Federal Agency ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 43033b7f-3f8f-4845-b0f6-64cb214065e0
+		summarizeBy: count
+		sourceColumn: State or Federal Agency ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Latitude
+		dataType: double
+		lineageTag: 85b3fffb-030e-478c-a08a-3210f8e78123
+		summarizeBy: sum
+		sourceColumn: Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Longitude
+		dataType: double
+		lineageTag: 1cf9c228-5cbf-4b5a-97e6-4ce6d97e7bbc
+		summarizeBy: sum
+		sourceColumn: Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column County
+		dataType: string
+		lineageTag: 1778d08b-74bc-432d-b475-d9e6b44c6b29
+		summarizeBy: none
+		sourceColumn: County
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: b1994ae4-bc4b-4ddf-9ecd-a88b00288802
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Distance to Nearest City (Miles)'
+		dataType: double
+		lineageTag: 22739afd-6437-439a-8304-b1010f0531c6
+		summarizeBy: sum
+		sourceColumn: Distance to Nearest City (Miles)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'River or Stream Name'
+		dataType: string
+		lineageTag: edbb3c37-11ef-4af2-b50a-97ef96800b35
+		summarizeBy: none
+		sourceColumn: River or Stream Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Congressional District'
+		dataType: string
+		lineageTag: ba263c28-2fe8-4d54-a728-01d6666b26e3
+		summarizeBy: none
+		sourceColumn: Congressional District
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'State Regulated Dam'
+		dataType: string
+		lineageTag: a715f001-ce0e-4423-8122-729fa6cf6a2f
+		summarizeBy: none
+		sourceColumn: State Regulated Dam
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'State Jurisdictional Dam'
+		dataType: string
+		lineageTag: 2811a4e2-c290-4360-a9cb-1f2e9d92fbfe
+		summarizeBy: none
+		sourceColumn: State Jurisdictional Dam
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'State Regulatory Agency'
+		dataType: string
+		lineageTag: 2bb939dd-c714-43cd-8e2b-e7dcd3ea733d
+		summarizeBy: none
+		sourceColumn: State Regulatory Agency
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'State Permitting Authority'
+		dataType: string
+		lineageTag: fe2a83e3-857b-4a42-b19d-4c3f7271d4ae
+		summarizeBy: none
+		sourceColumn: State Permitting Authority
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'State Inspection Authority'
+		dataType: string
+		lineageTag: ac15221d-683c-4238-9853-424553334e28
+		summarizeBy: none
+		sourceColumn: State Inspection Authority
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'State Enforcement Authority'
+		dataType: string
+		lineageTag: c98360b7-926e-40bf-963a-002f7d704fab
+		summarizeBy: none
+		sourceColumn: State Enforcement Authority
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Federally Regulated Dam'
+		dataType: string
+		lineageTag: e6003e23-e3e5-4978-8635-e4cce0bb4e17
+		summarizeBy: none
+		sourceColumn: Federally Regulated Dam
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Built Under the Authority of the Secretary of Agriculture'
+		dataType: string
+		lineageTag: 5222724d-e8bb-4180-87e4-7bf8f0bcb13e
+		summarizeBy: none
+		sourceColumn: Built Under the Authority of the Secretary of Agriculture
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Primary Dam Type'
+		dataType: string
+		lineageTag: dd92c1ec-6c5c-46e5-b4b0-6e38d72a027d
+		summarizeBy: none
+		sourceColumn: Primary Dam Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dam Types'
+		dataType: string
+		lineageTag: 83f0edd8-7c78-4cfa-8176-1effeb945874
+		summarizeBy: none
+		sourceColumn: Dam Types
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dam Height (Ft)'
+		dataType: int64
+		formatString: 0
+		lineageTag: f911a052-39a7-498a-9d2b-b76410eeeaa3
+		summarizeBy: sum
+		sourceColumn: Dam Height (Ft)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NID Height (Ft)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 59831b95-59ba-40c4-b36d-95d5b6f3bb69
+		summarizeBy: sum
+		sourceColumn: NID Height (Ft)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NID Height Category'
+		dataType: string
+		lineageTag: e670860c-14b9-4b73-abf2-12914574a275
+		summarizeBy: none
+		sourceColumn: NID Height Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dam Length (Ft)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2aad8516-145d-4328-a0da-6a2fea45a969
+		summarizeBy: sum
+		sourceColumn: Dam Length (Ft)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Completed'
+		dataType: string
+		lineageTag: adbe9710-bb66-40f8-97bf-718b289fce96
+		summarizeBy: none
+		sourceColumn: Year Completed
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Completed Category'
+		dataType: string
+		lineageTag: f461e73a-9e0f-4fad-84aa-1e26294677cc
+		summarizeBy: none
+		sourceColumn: Year Completed Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NID Storage (Acre-Ft)'
+		dataType: double
+		lineageTag: e75ec521-e34e-4f3a-8d7a-9f3f06b35769
+		summarizeBy: sum
+		sourceColumn: NID Storage (Acre-Ft)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Max Storage (Acre-Ft)'
+		dataType: double
+		lineageTag: 760c5b03-2a55-4412-ab58-ec728aaf8095
+		summarizeBy: sum
+		sourceColumn: Max Storage (Acre-Ft)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Normal Storage (Acre-Ft)'
+		dataType: double
+		lineageTag: d78cab37-7ebb-4400-b39f-c2a5f3c1690f
+		summarizeBy: sum
+		sourceColumn: Normal Storage (Acre-Ft)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Surface Area (Acres)'
+		dataType: double
+		lineageTag: b59b26a2-ba3b-4fcd-89be-4703ac313f09
+		summarizeBy: sum
+		sourceColumn: Surface Area (Acres)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Drainage Area (Sq Miles)'
+		dataType: double
+		lineageTag: bfdbcbcb-4cf8-4034-8da2-e656b42a9218
+		summarizeBy: sum
+		sourceColumn: Drainage Area (Sq Miles)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Max Discharge (Cubic Ft/Second)'
+		dataType: string
+		lineageTag: a2bd1bca-e13b-4f9d-8b49-74a3d2d0d616
+		summarizeBy: none
+		sourceColumn: Max Discharge (Cubic Ft/Second)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data Last Updated'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 28f0fc38-a2f9-4e60-924b-bcd8b6e61dd2
+		summarizeBy: none
+		sourceColumn: Data Last Updated
+
+		variation Variation
+			isDefault
+			relationship: 176ae7e9-3fa6-459e-bbf3-8934861e8e5a
+			defaultHierarchy: LocalDateTable_1c1b5289-d2d9-4db5-a6cb-2ff620210fa3.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Inspection Frequency'
+		dataType: string
+		lineageTag: ab6d6668-2254-4011-9ebd-8a2f15129d2e
+		summarizeBy: none
+		sourceColumn: Inspection Frequency
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EAP Prepared'
+		dataType: string
+		lineageTag: 6df32c7a-2c7d-4016-a65e-1e264008857e
+		summarizeBy: none
+		sourceColumn: EAP Prepared
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EAP Last Revision Date'
+		dataType: string
+		lineageTag: d1a3f8e3-89cf-445b-9ffd-8f4870eb52f4
+		summarizeBy: none
+		sourceColumn: EAP Last Revision Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Website URL'
+		dataType: string
+		lineageTag: beabe082-eb65-4e53-96f5-465c5b5effd9
+		summarizeBy: none
+		sourceColumn: Website URL
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Operational Status'
+		dataType: string
+		lineageTag: 02497ab6-b403-4571-8cec-26881603423e
+		summarizeBy: none
+		sourceColumn: Operational Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Operational Status Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d1203842-ca02-4215-a3d2-33c3e296ba22
+		summarizeBy: none
+		sourceColumn: Operational Status Date
+
+		variation Variation
+			isDefault
+			relationship: a516d348-acfe-4836-8d0d-a6e6f6060d0b
+			defaultHierarchy: LocalDateTable_b8e1d758-4cc1-4b53-95b1-aa8dd62f8a13.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Inundation Maps Added to NID?'
+		dataType: string
+		lineageTag: c344f23c-4485-46a2-acec-fbfa4c1d5749
+		summarizeBy: none
+		sourceColumn: Inundation Maps Added to NID?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Has Photo?'
+		dataType: string
+		lineageTag: 13766305-ade3-4e13-ae85-87b13fc1c72f
+		summarizeBy: none
+		sourceColumn: Has Photo?
+
+		annotation SummarizationSetBy = Automatic
+
+	column damid
+		dataType: int64
+		formatString: 0
+		lineageTag: 1e407ca6-19e1-416b-8aa9-c73743dd3c76
+		summarizeBy: sum
+		sourceColumn: damid
+
+		annotation SummarizationSetBy = Automatic
+
+	column LegacyNumb
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d374143-584c-46ff-85b0-fcb4d9d9505b
+		summarizeBy: sum
+		sourceColumn: LegacyNumb
+
+		annotation SummarizationSetBy = Automatic
+
+	column DCR_Watershed_SqMi
+		dataType: double
+		lineageTag: bdefca8e-34e9-4af1-8e78-b58e41d1fbce
+		summarizeBy: sum
+		sourceColumn: DCR_Watershed_SqMi
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SVI_TotalPop_InZone
+		dataType: int64
+		formatString: 0
+		lineageTag: 5442a40a-3384-44bf-9953-a214a6dd0b79
+		summarizeBy: sum
+		sourceColumn: SVI_TotalPop_InZone
+
+		annotation SummarizationSetBy = Automatic
+
+	column SVI_Pop_POV150
+		dataType: int64
+		formatString: 0
+		lineageTag: 10e2f389-1abb-4c92-ae2e-fd2c5dd5eafb
+		summarizeBy: sum
+		sourceColumn: SVI_Pop_POV150
+
+		annotation SummarizationSetBy = Automatic
+
+	column SVI_Pop_AGE65
+		dataType: int64
+		formatString: 0
+		lineageTag: cbd91c47-98e3-4189-9842-453baa2e0c6c
+		summarizeBy: sum
+		sourceColumn: SVI_Pop_AGE65
+
+		annotation SummarizationSetBy = Automatic
+
+	column SVI_Pop_DISABL
+		dataType: int64
+		formatString: 0
+		lineageTag: f1424c13-d79e-405b-a54b-d79fdb9799cb
+		summarizeBy: sum
+		sourceColumn: SVI_Pop_DISABL
+
+		annotation SummarizationSetBy = Automatic
+
+	column SVI_Pop_NOVEH
+		dataType: int64
+		formatString: 0
+		lineageTag: 64bf2255-ca93-4b7f-b985-ffde75f0d7d8
+		summarizeBy: sum
+		sourceColumn: SVI_Pop_NOVEH
+
+		annotation SummarizationSetBy = Automatic
+
+	column DCR_EP_Status
+		dataType: string
+		lineageTag: 0308e340-907a-4843-82de-4ca47f5d8419
+		summarizeBy: none
+		sourceColumn: DCR_EP_Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Inspection_Date_Final
+		dataType: string
+		lineageTag: 90968c82-c56a-4a36-a1c7-9f0e5168734c
+		summarizeBy: none
+		sourceColumn: Inspection_Date_Final
+
+		annotation SummarizationSetBy = Automatic
+
+	column Condition_Final
+		dataType: string
+		lineageTag: 71e867fc-c61e-472b-ba4f-29ca7eba33f7
+		summarizeBy: none
+		sourceColumn: Condition_Final
+
+		annotation SummarizationSetBy = Automatic
+
+	column Hazard_Final
+		dataType: string
+		lineageTag: 9629b20c-ab17-453c-bcf7-a075c97e7e38
+		summarizeBy: none
+		sourceColumn: Hazard_Final
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'In Fathom 100yr Flood Zone'
+		dataType: int64
+		formatString: 0
+		lineageTag: f4b11390-f049-4c59-8152-a96e1b1609d9
+		summarizeBy: sum
+		sourceColumn: In Fathom 100yr Flood Zone
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'In Fathom 500yr Flood Zone'
+		dataType: int64
+		formatString: 0
+		lineageTag: b6976bde-774b-44f5-aaa1-4949397609e3
+		summarizeBy: sum
+		sourceColumn: In Fathom 500yr Flood Zone
+
+		annotation SummarizationSetBy = Automatic
+
+	column D1_Hazard_Score
+		dataType: double
+		lineageTag: ff5a2f1f-5462-4a32-b180-b2ad863fef35
+		summarizeBy: sum
+		sourceColumn: D1_Hazard_Score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Needs_Hazard_Classification
+		dataType: int64
+		formatString: 0
+		lineageTag: 08593db9-e7ff-4521-9a9d-6cbce3abcdb6
+		summarizeBy: sum
+		sourceColumn: Needs_Hazard_Classification
+
+		annotation SummarizationSetBy = Automatic
+
+	column D2_Flood_Score
+		dataType: int64
+		formatString: 0
+		lineageTag: 53d7114c-dcdd-4011-81a1-3b9d7c0bba4a
+		summarizeBy: sum
+		sourceColumn: D2_Flood_Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column D3_Watershed_Score
+		dataType: double
+		lineageTag: 79851b8d-5f82-4cec-9828-7af2c95cf301
+		summarizeBy: sum
+		sourceColumn: D3_Watershed_Score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column D4_Impact_Score
+		dataType: double
+		lineageTag: 8a1d145d-2286-428d-bba9-84d2fd7e7bdb
+		summarizeBy: sum
+		sourceColumn: D4_Impact_Score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column D5_DataQuality_Score
+		dataType: double
+		lineageTag: 7e418614-bcc0-40b8-a129-74e699ea7f1c
+		summarizeBy: sum
+		sourceColumn: D5_DataQuality_Score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Triage_Score
+		dataType: double
+		lineageTag: 9d264026-5769-4e11-9dc5-bdbc6efb2056
+		summarizeBy: sum
+		sourceColumn: Triage_Score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Priority_Band
+		dataType: string
+		lineageTag: 0ad0aa78-d067-4f30-a800-5d7d850a8c0f
+		summarizeBy: none
+		sourceColumn: Priority_Band
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Flood Risk' =
+			IF([In Fathom 100yr Flood Zone] = 1, "100yr Zone",
+			             IF([In Fathom 500yr Flood Zone] = 1, "500yr Zone", "No Flood Zone"))
+		lineageTag: 80b56776-9330-4783-ba35-3766032f339b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Inspection Status' = IF(ISBLANK([Inspection_Date_Final]), "Never Inspected", "Inspected")
+		lineageTag: cbe37efa-7117-45a7-8518-26453515af0f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EAP Risk' =
+			IF([EAP Prepared] = "No", "No EAP - High Risk",
+			           IF([EAP Prepared] = "Yes", "EAP Exists", "Not Required"))
+		lineageTag: 77891e92-3c66-4157-8d32-0e37505cde40
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Band Color' =
+			SWITCH([Priority_Band],
+			    "Critical", "#C62828",
+			    "High",     "#E65100",
+			    "Moderate", "#F9A825",
+			    "Low",      "#2E7D32",
+			    "#999999")
+		lineageTag: 03bcddc3-8abc-4b8a-aa38-27468bf7ca3e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Flood_Band =
+			
+			SWITCH(TRUE(),
+			    'dams_triage_scored'[D2_Flood_Score] <= 20, "0-20",
+			    'dams_triage_scored'[D2_Flood_Score] <= 40, "21-40",
+			    'dams_triage_scored'[D2_Flood_Score] <= 60, "41-60",
+			    'dams_triage_scored'[D2_Flood_Score] <= 80, "61-80",
+			    "81-100"
+			)
+		lineageTag: de8a68bc-859b-432d-bc19-8e26d7ea1afe
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Map_Category =
+			
+			IF(
+			    'dams_triage_scored'[Inspection_Date_Final] = "Never Inspected",
+			    "Not Inspected",
+			    'dams_triage_scored'[Priority_Band]
+			)
+		lineageTag: e3d899be-c3e1-4bf5-913c-b552b1cabd05
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Inspection_Status =
+			
+			IF(
+			    'dams_triage_scored'[Inspection_Date_Final] = "Never Inspected"
+			    || ISBLANK('dams_triage_scored'[Inspection_Date_Final])
+			    || 'dams_triage_scored'[Inspection_Date_Final] = ""
+			    || 'dams_triage_scored'[Inspection_Date_Final] = "Unknown",
+			    "Not Inspected",
+			    "Inspected"
+			)
+		lineageTag: 2dae9e84-a481-4f11-aeae-9007d02234d0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dams_triage_scored = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\buddh\OneDrive\Desktop\dams_triage_scored.csv"),[Delimiter=",", Columns=83, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Dam Name", type text}, {"Other Names", type text}, {"NID ID", type text}, {"Federal ID", type text}, {"Owner Names", type text}, {"Owner Types", type text}, {"Primary Owner Type", type text}, {"Number of Associated Structures", Int64.Type}, {"Is Associated Structure?", type text}, {"Designer Names", type text}, {"Primary Purpose", type text}, {"Purposes", type text}, {"Source Agency", type text}, {"State or Federal Agency ID", Int64.Type}, {"Latitude", type number}, {"Longitude", type number}, {"County", type text}, {"City", type text}, {"Distance to Nearest City (Miles)", type number}, {"River or Stream Name", type text}, {"Congressional District", type text}, {"State Regulated Dam", type text}, {"State Jurisdictional Dam", type text}, {"State Regulatory Agency", type text}, {"State Permitting Authority", type text}, {"State Inspection Authority", type text}, {"State Enforcement Authority", type text}, {"Federally Regulated Dam", type text}, {"Built Under the Authority of the Secretary of Agriculture", type text}, {"NRCS Watershed Dam Authorization", type text}, {"Primary Dam Type", type text}, {"Dam Types", type text}, {"Core Types", type text}, {"Foundation", type text}, {"Dam Height (Ft)", Int64.Type}, {"Hydraulic Height (Ft)", Int64.Type}, {"Structural Height (Ft)", Int64.Type}, {"NID Height (Ft)", Int64.Type}, {"NID Height Category", type text}, {"Dam Length (Ft)", Int64.Type}, {"Volume (Cubic Yards)", type text}, {"Year Completed", type text}, {"Year Completed Category", type text}, {"NID Storage (Acre-Ft)", type number}, {"Max Storage (Acre-Ft)", type number}, {"Normal Storage (Acre-Ft)", type number}, {"Surface Area (Acres)", type number}, {"Drainage Area (Sq Miles)", type number}, {"Max Discharge (Cubic Ft/Second)", type text}, {"Spillway Type", type text}, {"Spillway Width (Ft)", type text}, {"Outlet Gate Type", type text}, {"Data Last Updated", type date}, {"Inspection Frequency", type text}, {"EAP Prepared", type text}, {"EAP Last Revision Date", type text}, {"Website URL", type text}, {"Operational Status", type text}, {"Operational Status Date", type date}, {"Inundation Maps Added to NID?", type text}, {"Has Photo?", type text}, {"damid", Int64.Type}, {"LegacyNumb", Int64.Type}, {"DCR_Watershed_SqMi", type number}, {"SVI_TotalPop_InZone", Int64.Type}, {"SVI_Pop_POV150", Int64.Type}, {"SVI_Pop_AGE65", Int64.Type}, {"SVI_Pop_DISABL", Int64.Type}, {"SVI_Pop_NOVEH", Int64.Type}, {"DCR_EP_Status", type text}, {"Inspection_Date_Final", type text}, {"Condition_Final", type text}, {"Hazard_Final", type text}, {"In Fathom 100yr Flood Zone", Int64.Type}, {"In Fathom 500yr Flood Zone", Int64.Type}, {"D1_Hazard_Score", type number}, {"Needs_Hazard_Classification", Int64.Type}, {"D2_Flood_Score", Int64.Type}, {"D3_Watershed_Score", type number}, {"D4_Impact_Score", type number}, {"D5_DataQuality_Score", type number}, {"Triage_Score", type number}, {"Priority_Band", type text}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","","Unknown",Replacer.ReplaceValue,{"DCR_EP_Status"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","","Never Inspected",Replacer.ReplaceValue,{"Inspection_Date_Final"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","","Unknown",Replacer.ReplaceValue,{"EAP Last Revision Date"}),
+				    #"Replaced Value3" = Table.ReplaceValue(#"Replaced Value2","","Unknown",Replacer.ReplaceValue,{"Inspection Frequency"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Replaced Value3",{"Outlet Gate Type", "Spillway Width (Ft)", "Spillway Type"}),
+				    #"Replaced Value4" = Table.ReplaceValue(#"Removed Columns","","Unknown",Replacer.ReplaceValue,{"Max Discharge (Cubic Ft/Second)"}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Replaced Value4",{"Volume (Cubic Yards)"}),
+				    #"Replaced Value5" = Table.ReplaceValue(#"Removed Columns1","","Unknown",Replacer.ReplaceValue,{"Year Completed"}),
+				    #"Removed Columns2" = Table.RemoveColumns(#"Replaced Value5",{"Foundation", "Core Types", "NRCS Watershed Dam Authorization"}),
+				    #"Replaced Value6" = Table.ReplaceValue(#"Removed Columns2","","Unknown",Replacer.ReplaceValue,{"Designer Names"}),
+				    #"Replaced Value7" = Table.ReplaceValue(#"Replaced Value6","","Unknown",Replacer.ReplaceValue,{"Other Names"}),
+				    #"Replaced Value8" = Table.ReplaceValue(#"Replaced Value7","","Unknown",Replacer.ReplaceValue,{"Owner Names"}),
+				    #"Replaced Value9" = Table.ReplaceValue(#"Replaced Value8","","Unknown",Replacer.ReplaceValue,{"Primary Purpose"}),
+				    #"Replaced Value10" = Table.ReplaceValue(#"Replaced Value9","","Unknown ",Replacer.ReplaceValue,{"Purposes"}),
+				    #"Replaced Value11" = Table.ReplaceValue(#"Replaced Value10","","Unknown",Replacer.ReplaceValue,{"Primary Dam Type"}),
+				    #"Removed Columns3" = Table.RemoveColumns(#"Replaced Value11",{"Structural Height (Ft)", "Hydraulic Height (Ft)"}),
+				    #"Added Custom" = Table.AddColumn(#"Removed Columns3", "test", each if [#"Is Associated Structure?"] = "Yes" then 1 else 0),
+				    #"Removed Columns4" = Table.RemoveColumns(#"Added Custom",{"test"})
+				in
+				    #"Removed Columns4"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

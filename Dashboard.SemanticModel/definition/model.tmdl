@@ -1,0 +1,41 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+/// Errors in queries that were loaded on 4/11/2026 1:54:20 PM.
+queryGroup 'Query Errors - 4/11/2026 1:54:20 PM'
+
+	annotation PBI_QueryGroupOrder = 0
+
+/// Errors in queries that were loaded on 4/11/2026 6:54:55 PM.
+queryGroup 'Query Errors - 4/11/2026 6:54:55 PM'
+
+	annotation PBI_QueryGroupOrder = 1
+
+/// Errors in queries that were loaded on 4/15/2026 3:27:30 PM.
+queryGroup 'Query Errors - 4/15/2026 3:27:30 PM'
+
+	annotation PBI_QueryGroupOrder = 2
+
+/// Errors in queries that were loaded on 4/15/2026 3:37:06 PM.
+queryGroup 'Query Errors - 4/15/2026 3:37:06 PM'
+
+	annotation PBI_QueryGroupOrder = 3
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["dams_triage_scored","Errors in dams_triage_scored","Errors in dams_triage_scored (2)","Errors in dams_triage_scored (3)","Errors in dams_triage_scored (4)"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table dams_triage_scored
+ref table DateTableTemplate_1a9f1d94-f08e-4e0e-82fa-2fd52dca4aa3
+ref table LocalDateTable_1c1b5289-d2d9-4db5-a6cb-2ff620210fa3
+ref table LocalDateTable_b8e1d758-4cc1-4b53-95b1-aa8dd62f8a13
+
+ref cultureInfo en-US
+
